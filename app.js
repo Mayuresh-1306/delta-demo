@@ -97,7 +97,11 @@ res.locals.currUser = req.user;
 app.use("/listings", listingRouter );
 app.use("/listings/:id/reviews", reviewRouter );
 app.use("/", userRouter);
-  
+
+app.get("/", (req, res) => {
+  res.redirect("/listings"); // or res.render("home");
+});
+
 
  app.use((err, req, res, next) => {
  let {statusCode = 500, message = "Something went wrong!"} = err;
